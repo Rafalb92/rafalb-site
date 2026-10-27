@@ -1,26 +1,152 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   1. Primitive tokens — raw palette.
+      Components never reference these directly.
+   ========================================================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --neutral-100: #ededed;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #787878;
+  --neutral-850: #222222;
+  --neutral-900: #1a1a1a;
+
+  --amber-500: #f9a634;
+}
+
+/* ==========================================================================
+   2. Semantic tokens — what components actually use.
+      A future light theme only needs to override this layer.
+   ========================================================================== */
+:root {
+  /* Surfaces */
+  --bg: var(--neutral-850);
+  --surface: rgb(255 255 255 / 0.03);
+  --surface-hover: rgb(255 255 255 / 0.05);
+
+  /* Lines */
+  --line: rgb(255 255 255 / 0.08);
+  --line-strong: rgb(255 255 255 / 0.16);
+
+  /* Text */
+  --fg: var(--neutral-100);
+  --fg-muted: var(--neutral-400);
+  --fg-subtle: var(--neutral-500); /* ~3.6:1 — non-essential meta text only */
+
+  /* Accent */
+  --accent: var(--amber-500);
+  --accent-fg: var(--neutral-900);
+
+  /* Decor */
+  --ghost: rgb(255 255 255 / 0.04);
+  --led: var(--amber-500);
+
+  /* Layout */
+  --page-gutter: clamp(1rem, 2vw, 1.5rem);
+  --grid-gap: clamp(0.75rem, 1.2vw, 1rem);
+  --tile-padding: clamp(1rem, 1.6vw, 1.5rem);
+  --tile-radius: 1.25rem;
+}
+
+/* ==========================================================================
+   3. Tailwind theme — exposes semantic tokens as utilities.
+   ========================================================================== */
+@theme {
+  /* Disable the default palette: only design-system colors exist. */
+  --color-*: initial;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-ghost: var(--ghost);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --spacing-gutter: var(--page-gutter);
+  --spacing-grid: var(--grid-gap);
+  --spacing-tile: var(--tile-padding);
+
+  --radius-tile: var(--tile-radius);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ==========================================================================
+   4. Base
+   ========================================================================== */
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-fg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   5. Layout — bento grid map.
+      Every word in a row is one column. Tiles declare only their area name.
+   ========================================================================== */
+@layer components {
+  .bento {
+    display: grid;
+    gap: var(--grid-gap);
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: minmax(10rem, auto);
+    grid-template-areas:
+      "hero"
+      "now"
+      "projects"
+      "skills"
+      "experience"
+      "about"
+      "links";
+  }
+
+  @media (width >= 64rem) {
+    .bento {
+      height: 100%;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-template-rows: repeat(3, minmax(0, 1fr));
+      grid-template-areas:
+        "hero       hero       hero  hero  hero     hero     links    links    links    now      now      now"
+        "skills     skills     skills skills projects projects projects projects projects projects projects projects"
+        "experience experience about about projects projects projects projects projects projects projects projects";
+    }
+  }
 }
