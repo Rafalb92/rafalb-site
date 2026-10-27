@@ -71,8 +71,8 @@
   --color-accent-fg: var(--accent-fg);
   --color-ghost: var(--ghost);
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-raleway), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   --spacing-gutter: var(--page-gutter);
   --spacing-grid: var(--grid-gap);
@@ -92,6 +92,8 @@
   body {
     background-color: var(--bg);
     color: var(--fg);
+    /* Raleway defaults to old-style figures — force lining numerals. */
+    font-variant-numeric: lining-nums;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
