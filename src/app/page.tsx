@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { BackgroundDecor } from "@/components/background/BackgroundDecor";
 import { BentoGrid } from "@/components/bento/BentoGrid";
 import { InteractiveBentoGrid } from "@/components/bento/InteractiveBentoGrid";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -6,8 +7,10 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 
 export default function HomePage() {
   return (
-    // Full-viewport layer — the background decor (LEDs, ghost icons) will live here.
-    <div className="flex min-h-dvh flex-col lg:h-dvh lg:overflow-hidden">
+    // Full-viewport layer. `isolate` keeps the decor's negative z-index inside this page.
+    <div className="relative isolate flex min-h-dvh flex-col lg:h-dvh lg:overflow-hidden">
+      <BackgroundDecor />
+
       {/* Centered page column: header, grid and footer share the same edges. */}
       <div className="mx-auto flex w-full max-w-page flex-1 flex-col lg:min-h-0">
         <SiteHeader />
