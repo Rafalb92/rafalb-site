@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Raleway } from "next/font/google";
+import { MotionProvider } from "@/providers/MotionProvider";
 import "./globals.css";
 
 const raleway = Raleway({
@@ -23,7 +24,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${raleway.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        <MotionProvider>{children}</MotionProvider>
+      </body>
     </html>
   );
 }
