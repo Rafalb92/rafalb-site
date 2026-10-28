@@ -42,6 +42,8 @@
   --led: var(--amber-500);
 
   /* Layout */
+  --page-max-width: 88rem; /* 7xl = 80rem · 8xl = 88rem · 9xl = 96rem */
+  --grid-max-height: 52rem; /* desktop cap — taller screens get breathing room */
   --page-gutter: clamp(1rem, 2vw, 1.5rem);
   --grid-gap: clamp(0.75rem, 1.2vw, 1rem);
   --tile-padding: clamp(1rem, 1.6vw, 1.5rem);
@@ -79,6 +81,8 @@
   --font-sans: var(--font-raleway), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-hand: var(--font-caveat), cursive;
+
+  --container-page: var(--page-max-width);
 
   --spacing-gutter: var(--page-gutter);
   --spacing-grid: var(--grid-gap);
