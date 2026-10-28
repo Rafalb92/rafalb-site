@@ -47,7 +47,7 @@ export function ExpandedTile({
       aria-labelledby={titleId}
       style={{ borderRadius: TILE_RADIUS }}
       transition={{ layout: TILE_LAYOUT_TRANSITION }}
-      className="fixed inset-gutter z-50 flex flex-col overflow-hidden border border-line bg-bg lg:absolute lg:inset-0 lg:z-10 lg:bg-surface"
+      className="fixed inset-gutter z-50 flex flex-col overflow-hidden border border-line bg-surface lg:absolute lg:inset-0 lg:z-10"
     >
       <motion.header
         layout="position"
