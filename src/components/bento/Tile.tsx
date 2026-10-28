@@ -2,6 +2,7 @@
 
 import { motion, type HTMLMotionProps } from "motion/react";
 import type { ReactNode, Ref } from "react";
+import { LuPlus } from "react-icons/lu";
 import { cn } from "@/lib/cn";
 import {
   TILE_FADE_IN,
@@ -48,19 +49,26 @@ export function Tile({
         opacity: dimmed ? TILE_FADE_OUT : TILE_FADE_IN,
       }}
       className={cn(
-        "relative overflow-hidden border border-line bg-surface",
+        "group relative overflow-hidden border border-line bg-surface",
         isExpandable && "transition-colors duration-200 hover:bg-surface-hover",
         className,
       )}
       {...rest}
     >
-      {/* `layout` lets Motion counter-scale the content, so text doesn't stretch mid-animation. */}
+      {/* `layout` lets Motion counter-scale the content, so nothing stretches mid-animation. */}
       <motion.div
         layout
         transition={{ layout: TILE_LAYOUT_TRANSITION }}
         className="relative h-full p-tile"
       >
         {children}
+
+        {isExpandable && (
+          <LuPlus
+            aria-hidden="true"
+            className="pointer-events-none absolute top-tile right-tile size-4 text-fg-subtle transition duration-300 ease-out-expo group-focus-within:rotate-90 group-focus-within:text-accent group-hover:rotate-90 group-hover:text-accent"
+          />
+        )}
       </motion.div>
 
       {isExpandable && (

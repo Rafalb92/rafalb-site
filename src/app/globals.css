@@ -78,6 +78,7 @@
 
   --font-sans: var(--font-raleway), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-hand: var(--font-caveat), cursive;
 
   --spacing-gutter: var(--page-gutter);
   --spacing-grid: var(--grid-gap);

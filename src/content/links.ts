@@ -9,11 +9,11 @@ export interface ContactLink {
 }
 
 export const CONTACT_LINKS: readonly ContactLink[] = [
-  { kind: "github", label: "GitHub", href: "https://github.com/your-handle" },
+  { kind: "github", label: "GitHub", href: "https://github.com/Rafalb92" },
   {
     kind: "linkedin",
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/your-handle",
+    href: "https://www.linkedin.com/",
   },
   { kind: "email", label: "Email", href: `mailto:${PROFILE.email}` },
   {

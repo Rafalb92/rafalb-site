@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Raleway } from "next/font/google";
+import { Caveat, Geist_Mono, Raleway } from "next/font/google";
 import { MotionProvider } from "@/providers/MotionProvider";
 import "./globals.css";
 
@@ -13,6 +13,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin", "latin-ext"],
 });
 
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin", "latin-ext"],
+});
+
 export const metadata: Metadata = {
   title: "Rafał — Fullstack Developer",
   description:
@@ -23,7 +28,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${raleway.variable} ${geistMono.variable}`}>
+    <html
+      lang="en"
+      className={`${raleway.variable} ${geistMono.variable} ${caveat.variable}`}
+    >
       <body>
         <MotionProvider>{children}</MotionProvider>
       </body>

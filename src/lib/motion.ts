@@ -1,4 +1,4 @@
-import type { Transition } from "motion/react";
+import { stagger, type Transition, type Variants } from "motion/react";
 
 /** Mirrors `--ease-out-expo` in globals.css. */
 export const EASE_OUT_EXPO: [number, number, number, number] = [
@@ -37,4 +37,22 @@ export const CONTENT_REVEAL: Transition = {
   duration: 0.3,
   delay: 0.18,
   ease: EASE_OUT_EXPO,
+};
+
+/** Parent of a staggered list: reveals children one after another. */
+export const STAGGER_CONTAINER: Variants = {
+  hidden: {},
+  visible: {
+    transition: { delayChildren: stagger(0.06, { startDelay: 0.2 }) },
+  },
+};
+
+/** Child of a staggered list: subtle fade-up. */
+export const FADE_UP_ITEM: Variants = {
+  hidden: { opacity: 0, y: 8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: EASE_OUT_EXPO },
+  },
 };
