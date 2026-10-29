@@ -1,24 +1,27 @@
+import type { Locale } from "@/lib/i18n/config";
 import { PROFILE } from "./profile";
 
-export type ContactLinkKind = "github" | "linkedin" | "email" | "cv";
+export const CONTACT_LINK_KINDS = [
+  "github",
+  "linkedin",
+  "email",
+  "cv",
+] as const;
 
-export interface ContactLink {
-  kind: ContactLinkKind;
-  label: string;
-  href: string;
+export type ContactLinkKind = (typeof CONTACT_LINK_KINDS)[number];
+
+const STATIC_HREFS = {
+  github: "https://github.com/Rafalb92",
+  linkedin: "https://www.linkedin.com",
+  email: `mailto:${PROFILE.email}`,
+} satisfies Record<Exclude<ContactLinkKind, "cv">, string>;
+
+/** One CV per language — the link follows the active locale. */
+const CV_HREFS: Record<Locale, string> = {
+  en: "/cv/Rafal-Fullstack-Developer-CV-EN.pdf",
+  pl: "/cv/Rafal-Fullstack-Developer-CV-PL.pdf",
+};
+
+export function getContactHref(kind: ContactLinkKind, locale: Locale): string {
+  return kind === "cv" ? CV_HREFS[locale] : STATIC_HREFS[kind];
 }
-
-export const CONTACT_LINKS: readonly ContactLink[] = [
-  { kind: "github", label: "GitHub", href: "https://github.com/Rafalb92" },
-  {
-    kind: "linkedin",
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/",
-  },
-  { kind: "email", label: "Email", href: `mailto:${PROFILE.email}` },
-  {
-    kind: "cv",
-    label: "Download CV",
-    href: "/cv/Rafal-Fullstack-Developer-CV.pdf",
-  },
-];

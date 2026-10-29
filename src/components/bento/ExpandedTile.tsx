@@ -12,6 +12,8 @@ import { tileLayoutId, type SectionId } from "./sections";
 interface ExpandedTileProps {
   area: SectionId;
   label: string;
+  /** Accessible name of the close button, e.g. "Close Skills". */
+  closeLabel: string;
   onClose?: () => void;
   children: ReactNode;
 }
@@ -19,6 +21,7 @@ interface ExpandedTileProps {
 export function ExpandedTile({
   area,
   label,
+  closeLabel,
   onClose,
   children,
 }: ExpandedTileProps) {
@@ -65,7 +68,7 @@ export function ExpandedTile({
           ref={closeButtonRef}
           type="button"
           onClick={onClose}
-          aria-label={`Close ${label}`}
+          aria-label={closeLabel}
           className="grid size-9 cursor-pointer place-items-center rounded-full border border-line text-fg-muted transition-colors duration-200 hover:border-line-strong hover:text-fg"
         >
           <svg

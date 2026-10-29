@@ -15,7 +15,10 @@ import { tileLayoutId, type SectionId } from "./sections";
 interface TileProps extends Omit<HTMLMotionProps<"section">, "children"> {
   /** Grid area name — must match an area in the `.bento` template. */
   area: SectionId;
+  /** Accessible name of the tile region. */
   label: string;
+  /** Accessible name of the expand trigger, e.g. "Open Skills". Falls back to `label`. */
+  triggerLabel?: string;
   /** Fades the tile out while another tile is expanded. */
   dimmed?: boolean;
   /** When provided, the whole tile becomes a trigger that expands it. */
@@ -27,6 +30,7 @@ interface TileProps extends Omit<HTMLMotionProps<"section">, "children"> {
 export function Tile({
   area,
   label,
+  triggerLabel,
   dimmed = false,
   onExpand,
   triggerRef,
@@ -76,7 +80,7 @@ export function Tile({
           ref={triggerRef}
           type="button"
           onClick={onExpand}
-          aria-label={`Open ${label}`}
+          aria-label={triggerLabel ?? label}
           className="absolute inset-0 cursor-pointer rounded-[inherit] focus-visible:-outline-offset-2"
         />
       )}

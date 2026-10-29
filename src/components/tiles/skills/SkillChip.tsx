@@ -1,13 +1,19 @@
+import type { SkillData } from "@/content/skills";
 import { cn } from "@/lib/cn";
-import type { Skill } from "@/content/skills";
 
 interface SkillChipProps {
-  skill: Skill;
-  /** Marks skills that carry a note (shown on hover). */
+  skill: SkillData;
+  /** Context note, exposed to screen readers (the visual tooltip is mouse-only). */
+  note?: string;
+  /** Marks skills that carry a note shown on hover. */
   highlighted?: boolean;
 }
 
-export function SkillChip({ skill, highlighted = false }: SkillChipProps) {
+export function SkillChip({
+  skill,
+  note,
+  highlighted = false,
+}: SkillChipProps) {
   const Icon = skill.icon;
 
   return (
@@ -31,7 +37,7 @@ export function SkillChip({ skill, highlighted = false }: SkillChipProps) {
 
       <span className="min-w-0 truncate text-sm text-fg">
         {skill.name}
-        {skill.note && <span className="sr-only"> — {skill.note}</span>}
+        {note && <span className="sr-only"> — {note}</span>}
       </span>
 
       {highlighted && (

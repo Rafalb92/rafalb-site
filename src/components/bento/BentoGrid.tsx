@@ -2,9 +2,10 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef } from "react";
+import { useDictionary } from "@/lib/i18n/LocaleProvider";
 import { TILE_FADE_OUT } from "@/lib/motion";
 import { ExpandedTile } from "./ExpandedTile";
-import { SECTIONS, getSection, type SectionId } from "./sections";
+import { SECTION_IDS, type SectionId } from "./sections";
 import { TILE_CONTENT } from "./tile-content";
 import { Tile } from "./Tile";
 
@@ -15,6 +16,7 @@ interface BentoGridProps {
 }
 
 export function BentoGrid({ activeId, onOpen, onClose }: BentoGridProps) {
+  const { sections, tile } = useDictionary();
   const triggerRefs = useRef(new Map<SectionId, HTMLButtonElement>());
 
   // Ignore ids pointing at non-expandable sections (e.g. `?section=hero`).
@@ -39,17 +41,19 @@ export function BentoGrid({ activeId, onOpen, onClose }: BentoGridProps) {
   return (
     <div className="relative lg:h-full">
       <div className="bento" inert={isExpanded}>
-        {SECTIONS.map(({ id, label }) => {
+        {SECTION_IDS.map((id) => {
           // The expanded panel takes over this tile's layoutId.
           if (id === expandedId) return null;
 
           const { Collapsed, Expanded } = TILE_CONTENT[id];
+          const { label } = sections[id];
 
           return (
             <Tile
               key={id}
               area={id}
               label={label}
+              triggerLabel={tile.open(label)}
               dimmed={isExpanded}
               onExpand={Expanded && onOpen ? () => onOpen(id) : undefined}
               triggerRef={(node) => {
@@ -80,7 +84,8 @@ export function BentoGrid({ activeId, onOpen, onClose }: BentoGridProps) {
           <ExpandedTile
             key={expandedId}
             area={expandedId}
-            label={getSection(expandedId).label}
+            label={sections[expandedId].label}
+            closeLabel={tile.close(sections[expandedId].label)}
             onClose={onClose}
           >
             <ExpandedContent />

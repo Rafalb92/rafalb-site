@@ -22,117 +22,110 @@ import {
   SiVuedotjs,
 } from "react-icons/si";
 
-export interface Skill {
+export interface SkillData {
+  /** Brand names are the same in every language — not translated. */
   name: string;
   /** Brand icon. Skills without one fall back to a monogram. */
   icon?: IconType;
-  /** Handwritten note: where or how the skill was used. */
-  note?: string;
   /** Shown in the collapsed Skills tile (keep it to max 6). */
   featured?: boolean;
 }
 
-export type SkillCategoryId = "frontend" | "backend" | "mobile" | "tooling";
+const SKILL_DATA = {
+  // Frontend
+  typescript: { name: "TypeScript", icon: SiTypescript, featured: true },
+  react: { name: "React", icon: SiReact, featured: true },
+  nextjs: { name: "Next.js", icon: SiNextdotjs, featured: true },
+  vue: { name: "Vue", icon: SiVuedotjs },
+  nuxt: { name: "Nuxt", icon: SiNuxt, featured: true },
+  tailwind: { name: "Tailwind CSS", icon: SiTailwindcss },
+  tanstackQuery: { name: "TanStack Query", icon: SiReactquery },
+  pinia: { name: "Pinia" },
+  zustand: { name: "Zustand" },
+  threejs: { name: "Three.js / R3F", icon: SiThreedotjs },
+  // Backend
+  nodejs: { name: "Node.js", icon: SiNodedotjs },
+  nestjs: { name: "NestJS", icon: SiNestjs, featured: true },
+  express: { name: "Express", icon: SiExpress },
+  postgresql: { name: "PostgreSQL", icon: SiPostgresql },
+  redis: { name: "Redis", icon: SiRedis },
+  bullmq: { name: "BullMQ" },
+  mikroorm: { name: "MikroORM" },
+  prisma: { name: "Prisma", icon: SiPrisma },
+  drizzle: { name: "Drizzle", icon: SiDrizzle },
+  // Mobile & on-device ML
+  reactNative: { name: "React Native", icon: SiReact, featured: true },
+  expo: { name: "Expo", icon: SiExpo },
+  visionCamera: { name: "VisionCamera" },
+  skia: { name: "React Native Skia" },
+  mediapipe: { name: "MediaPipe" },
+  // Tooling
+  docker: { name: "Docker", icon: SiDocker },
+  pnpm: { name: "pnpm", icon: SiPnpm },
+  turborepo: { name: "Turborepo", icon: SiTurborepo },
+  git: { name: "Git", icon: SiGit },
+} satisfies Record<string, SkillData>;
+
+export type SkillId = keyof typeof SKILL_DATA;
+
+export const SKILLS: Record<SkillId, SkillData> = SKILL_DATA;
+
+export const SKILL_CATEGORY_IDS = [
+  "frontend",
+  "backend",
+  "mobile",
+  "tooling",
+] as const;
+
+export type SkillCategoryId = (typeof SKILL_CATEGORY_IDS)[number];
 
 export interface SkillCategory {
   id: SkillCategoryId;
-  label: string;
-  description: string;
-  skills: readonly Skill[];
+  skillIds: readonly SkillId[];
 }
 
 export const SKILL_CATEGORIES: readonly SkillCategory[] = [
   {
     id: "frontend",
-    label: "Frontend",
-    description: "Interfaces, state and 3D in the browser.",
-    skills: [
-      {
-        name: "TypeScript",
-        icon: SiTypescript,
-        featured: true,
-        note: "everything, strict mode",
-      },
-      { name: "React", icon: SiReact, featured: true },
-      {
-        name: "Next.js",
-        icon: SiNextdotjs,
-        featured: true,
-        note: "this very site",
-      },
-      { name: "Vue", icon: SiVuedotjs },
-      {
-        name: "Nuxt",
-        icon: SiNuxt,
-        featured: true,
-        note: "IronOak storefront + admin",
-      },
-      { name: "Tailwind CSS", icon: SiTailwindcss },
-      { name: "TanStack Query", icon: SiReactquery },
-      { name: "Pinia" },
-      { name: "Zustand" },
-      {
-        name: "Three.js / R3F",
-        icon: SiThreedotjs,
-        note: "3D product configurators",
-      },
+    skillIds: [
+      "typescript",
+      "react",
+      "nextjs",
+      "vue",
+      "nuxt",
+      "tailwind",
+      "tanstackQuery",
+      "pinia",
+      "zustand",
+      "threejs",
     ],
   },
   {
     id: "backend",
-    label: "Backend",
-    description: "APIs, domain logic and data.",
-    skills: [
-      { name: "Node.js", icon: SiNodedotjs },
-      {
-        name: "NestJS",
-        icon: SiNestjs,
-        featured: true,
-        note: "IronOak — modular monolith, DDD",
-      },
-      { name: "Express", icon: SiExpress },
-      {
-        name: "PostgreSQL",
-        icon: SiPostgresql,
-        note: "schema per bounded context",
-      },
-      { name: "Redis", icon: SiRedis },
-      { name: "BullMQ", note: "background jobs in IronOak" },
-      { name: "MikroORM", note: "IronOak persistence layer" },
-      { name: "Prisma", icon: SiPrisma },
-      { name: "Drizzle", icon: SiDrizzle },
+    skillIds: [
+      "nodejs",
+      "nestjs",
+      "express",
+      "postgresql",
+      "redis",
+      "bullmq",
+      "mikroorm",
+      "prisma",
+      "drizzle",
     ],
   },
   {
     id: "mobile",
-    label: "Mobile & on-device ML",
-    description: "Native apps with models running on the phone.",
-    skills: [
-      { name: "React Native", icon: SiReact, featured: true, note: "RepCheck" },
-      { name: "Expo", icon: SiExpo },
-      { name: "VisionCamera", note: "live camera frame processing" },
-      { name: "React Native Skia", note: "real-time skeleton overlay" },
-      { name: "MediaPipe", note: "33 keypoints, ~22 ms per frame" },
-    ],
+    skillIds: ["reactNative", "expo", "visionCamera", "skia", "mediapipe"],
   },
   {
     id: "tooling",
-    label: "Tooling & infrastructure",
-    description:
-      "Monorepos, containers and the boring parts that keep it running.",
-    skills: [
-      { name: "Docker", icon: SiDocker, note: "Postgres + Redis via Compose" },
-      { name: "pnpm", icon: SiPnpm },
-      { name: "Turborepo", icon: SiTurborepo, note: "IronOak monorepo" },
-      { name: "Git", icon: SiGit },
-    ],
+    skillIds: ["docker", "pnpm", "turborepo", "git"],
   },
 ];
 
-export const ALL_SKILLS: readonly Skill[] = SKILL_CATEGORIES.flatMap(
-  (category) => category.skills,
-);
+export const SKILL_COUNT = Object.keys(SKILLS).length;
 
-export const FEATURED_SKILLS: readonly Skill[] = ALL_SKILLS.filter(
-  (skill) => skill.featured,
-);
+export const FEATURED_SKILL_IDS: readonly SkillId[] = (
+  Object.keys(SKILLS) as SkillId[]
+).filter((id) => SKILLS[id].featured);
