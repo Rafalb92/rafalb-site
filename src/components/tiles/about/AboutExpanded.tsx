@@ -13,15 +13,18 @@ export function AboutExpanded() {
   return (
     <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
       <div className="lg:col-span-4">
-        <div className="relative mx-auto aspect-4/5 w-full max-w-xs overflow-hidden rounded-xl border border-line bg-bg lg:sticky lg:top-0">
-          <Image
-            src={PORTRAIT}
-            alt={about.portraitAlt}
-            fill
-            sizes="(min-width: 1024px) 25vw, 60vw"
-            placeholder="blur"
-            className="object-cover object-top"
-          />
+        {/* Outer element sticks; inner element is the `relative` box next/image fills. */}
+        <div className="lg:sticky lg:top-0">
+          <div className="relative mx-auto aspect-4/5 w-full max-w-xs overflow-hidden rounded-xl border border-line bg-bg">
+            <Image
+              src={PORTRAIT}
+              alt={about.portraitAlt}
+              fill
+              sizes="(min-width: 1024px) 25vw, 60vw"
+              placeholder="blur"
+              className="object-cover object-top"
+            />
+          </div>
         </div>
       </div>
 
