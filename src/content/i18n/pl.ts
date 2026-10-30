@@ -114,4 +114,78 @@ export const pl: Dictionary = {
       },
     },
   },
+  experience: {
+    intro:
+      "Od linii produkcyjnej do kodu produkcyjnego — moja ścieżka, uczciwie, od najnowszego.",
+    labels: {
+      present: "teraz",
+      independent: "Niezależnie",
+      education: "Edukacja",
+    },
+    items: {
+      independent: {
+        role: "Product engineer",
+        description:
+          "Buduję IronOak i RepCheck w standardzie produkcyjnym — backendy oparte na DDD, monorepo i ML działające na urządzeniu.",
+      },
+      nexcoder: {
+        role: "Freelance web developer",
+        description:
+          "Strony dla małych firm w ramach własnej działalności, a równolegle intensywna samodzielna nauka, która zaprowadziła mnie od WordPressa do nowoczesnego stacku TypeScript.",
+      },
+      conditor: {
+        role: "Web developer i marketing",
+        description:
+          "Pierwsza komercyjna praca w webie — strony na WordPressie i SEO.",
+      },
+      alphaVision: {
+        role: "Operator maszyn → lider zmiany",
+        description:
+          "Obsługa maszyn produkcyjnych, a potem prowadzenie zmiany — odpowiedzialność za proces, zespół i wyniki. Myślenie systemowe, z którego korzystam do dziś.",
+      },
+    },
+    education: {
+      degree: "Technik mechatronik",
+    },
+  },
+  about: {
+    portraitAlt: "Ilustrowany portret Rafała",
+    story: [
+      {
+        heading: "Skąd idę",
+        body: "Zaczynałem jako technik mechatronik i spędziłem lata na linii produkcyjnej, ostatecznie prowadząc zmianę. Tam nauczyłem się myśleć systemami: każdy element ma swoje zadanie, a całość musi działać niezawodnie. Oprogramowanie okazało się tym samym problemem — tylko budowanie go daje więcej frajdy.",
+      },
+      {
+        heading: "Jak pracuję",
+        body: "Najpierw domena, potem kod. Modeluję biznes, zanim dotknę frameworka — dlatego rdzeń IronOak jest zbudowany w DDD, a nie jako CRUD. Nawet projekty portfolio traktuję produkcyjnie: monorepo, migracje, prawdziwe wdrożenia.",
+      },
+      {
+        heading: "Dokąd zmierzam",
+        body: "Kolejny krok: AI i ML w prawdziwych produktach. RepCheck już teraz rozpoznaje pozę człowieka na telefonie w około 22 ms na klatkę — chcę dalej budować tam, gdzie solidny backend spotyka modele, które robią coś pożytecznego.",
+      },
+    ],
+    lookingFor: {
+      heading: "Czego szukam",
+      items: [
+        "Role fullstack, frontend lub backend w TypeScripcie",
+        "Dowolna forma współpracy — UoP lub B2B",
+        "Preferuję pracę zdalną, jestem otwarty na hybrydę",
+      ],
+    },
+    languages: {
+      heading: "Języki",
+      items: [
+        { name: "Polski", level: "ojczysty" },
+        { name: "Angielski", level: "B1" },
+      ],
+    },
+    outside: {
+      heading: "Poza kodem",
+      items: [
+        "Siłownia — to z niej wzięły się IronOak i RepCheck",
+        "Gotowanie i pieczenie",
+        "Wędrówki po górach",
+      ],
+    },
+  },
 };

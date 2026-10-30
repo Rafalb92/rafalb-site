@@ -1,7 +1,7 @@
 import type { SectionId } from "@/components/bento/sections";
 import type { ProjectId } from "@/content/projects";
 import type { SkillCategoryId, SkillId } from "@/content/skills";
-
+import type { ExperienceId } from "@/content/experience";
 interface SectionText {
   label: string;
   /** Large background word shown while the tile is hovered or expanded. */
@@ -18,6 +18,11 @@ interface ProjectText {
   description: string;
   highlights: string[];
   imageAlt: string;
+}
+
+interface ExperienceText {
+  role: string;
+  description: string;
 }
 
 /** Partial on purpose: a missing note just means no tooltip for that skill. */
@@ -136,6 +141,79 @@ export const en = {
         imageAlt: "IronOak storefront — homepage",
       },
     } satisfies Record<ProjectId, ProjectText>,
+  },
+  experience: {
+    intro:
+      "From a production line to production code — the path, honestly, newest first.",
+    labels: {
+      present: "now",
+      independent: "Independent",
+      education: "Education",
+    },
+    items: {
+      independent: {
+        role: "Product engineer",
+        description:
+          "Building IronOak and RepCheck to production standard — domain-driven backends, monorepos and ML running on the device.",
+      },
+      nexcoder: {
+        role: "Freelance web developer",
+        description:
+          "Websites for small businesses under my own company, alongside deep self-study that took me from WordPress to modern TypeScript stacks.",
+      },
+      conditor: {
+        role: "Web developer & marketing",
+        description: "My first commercial web role — WordPress sites and SEO.",
+      },
+      alphaVision: {
+        role: "Machine operator → shift lead",
+        description:
+          "Ran production machines, then led a shift — responsibility for a process, a team and the results. Systems thinking I still use every day.",
+      },
+    } satisfies Record<ExperienceId, ExperienceText>,
+    education: {
+      degree: "Mechatronics technician",
+    },
+  },
+  about: {
+    portraitAlt: "Illustrated portrait of Rafał",
+    story: [
+      {
+        heading: "Where I come from",
+        body: "I started as a mechatronics technician and spent years on a production line, eventually leading a shift. That's where I learned to think in systems: every part has a job, and the whole thing has to run reliably. Software turned out to be the same problem — just more fun to build.",
+      },
+      {
+        heading: "How I work",
+        body: "Domain first, code second. I model the business before I touch the framework — which is why IronOak's core is built with DDD rather than CRUD. Even portfolio projects get production treatment: monorepos, migrations, real deployments.",
+      },
+      {
+        heading: "Where I'm heading",
+        body: "Next step: AI and ML in real products. RepCheck already runs pose estimation on the phone in about 22 ms per frame — I want to keep building where solid backend engineering meets models that do something useful.",
+      },
+    ],
+    lookingFor: {
+      heading: "What I'm looking for",
+      items: [
+        "Fullstack, frontend or backend roles in TypeScript",
+        "Any contract type — employment or B2B",
+        "Remote preferred, open to hybrid",
+      ],
+    },
+    languages: {
+      heading: "Languages",
+      items: [
+        { name: "Polish", level: "native" },
+        { name: "English", level: "B1" },
+      ],
+    },
+    outside: {
+      heading: "Outside code",
+      items: [
+        "The gym — the reason IronOak and RepCheck exist",
+        "Cooking and baking",
+        "Hiking in the mountains",
+      ],
+    },
   },
 };
 
