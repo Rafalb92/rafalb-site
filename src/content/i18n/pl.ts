@@ -85,4 +85,33 @@ export const pl: Dictionary = {
       turborepo: "monorepo IronOak",
     },
   },
+  projects: {
+    intro:
+      "Wybrane realizacje — czym jest każdy projekt, jakie decyzje za nim stoją i gdzie zobaczyć go w działaniu.",
+    status: {
+      live: "Online",
+      inProgress: "W trakcie",
+    },
+    labels: {
+      highlights: "Kluczowe decyzje",
+      stack: "Stack",
+      liveDemo: "Zobacz na żywo",
+      sourceCode: "Kod źródłowy",
+    },
+    items: {
+      ironoak: {
+        tagline:
+          "Sklep z premium sprzętem do domowej siłowni — witryna, panel admina i backend oparty na DDD.",
+        description:
+          "Platforma e-commerce zbudowana tak, jak zrobiłby to software house: modularny monolit w NestJS za dwiema aplikacjami Nuxt, z logiką biznesową zamodelowaną wprost zamiast ukrytej w CRUD-zie.",
+        highlights: [
+          "Modularny monolit z sześcioma bounded contextami, każdy we własnym schemacie PostgreSQL",
+          "Kontekst Ordering zamodelowany w DDD — agregaty, porty i adaptery (architektura heksagonalna)",
+          "Własny moduł Identity — hashowanie haseł Argon2id, tokeny JWT przez jose",
+          "Dwie aplikacje Nuxt 4 (witryna + panel admina) w monorepo Turborepo",
+        ],
+        imageAlt: "IronOak — strona główna sklepu",
+      },
+    },
+  },
 };

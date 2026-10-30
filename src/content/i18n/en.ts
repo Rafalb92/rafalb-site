@@ -1,4 +1,5 @@
 import type { SectionId } from "@/components/bento/sections";
+import type { ProjectId } from "@/content/projects";
 import type { SkillCategoryId, SkillId } from "@/content/skills";
 
 interface SectionText {
@@ -10,6 +11,13 @@ interface SectionText {
 interface SkillCategoryText {
   label: string;
   description: string;
+}
+
+interface ProjectText {
+  tagline: string;
+  description: string;
+  highlights: string[];
+  imageAlt: string;
 }
 
 /** Partial on purpose: a missing note just means no tooltip for that skill. */
@@ -99,6 +107,35 @@ export const en = {
       },
     } satisfies Record<SkillCategoryId, SkillCategoryText>,
     notes: skillNotes,
+  },
+  projects: {
+    intro:
+      "Selected work — what each project is, the decisions behind it and where to see it running.",
+    status: {
+      live: "Live",
+      inProgress: "In progress",
+    },
+    labels: {
+      highlights: "Key decisions",
+      stack: "Stack",
+      liveDemo: "Live demo",
+      sourceCode: "Source code",
+    },
+    items: {
+      ironoak: {
+        tagline:
+          "Premium home gym equipment store — storefront, admin panel and a domain-driven backend.",
+        description:
+          "A production-grade e-commerce platform built the way a software house would: a NestJS modular monolith behind two Nuxt apps, with the business core modeled explicitly instead of hidden in CRUD.",
+        highlights: [
+          "Modular monolith with six bounded contexts, each in its own PostgreSQL schema",
+          "Ordering context modeled with DDD — aggregates, ports and adapters (hexagonal architecture)",
+          "Identity built from scratch — Argon2id password hashing, JWT via jose",
+          "Two Nuxt 4 apps (storefront + admin) in a Turborepo monorepo",
+        ],
+        imageAlt: "IronOak storefront — homepage",
+      },
+    } satisfies Record<ProjectId, ProjectText>,
   },
 };
 

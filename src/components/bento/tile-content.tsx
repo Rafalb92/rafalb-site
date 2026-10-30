@@ -2,6 +2,8 @@ import type { ComponentType } from "react";
 import { HeroTile } from "@/components/tiles/HeroTile";
 import { LinksTile } from "@/components/tiles/LinksTile";
 import { NowTile } from "@/components/tiles/NowTile";
+import { ProjectsExpanded } from "@/components/tiles/projects/ProjectsExpanded";
+import { ProjectsTile } from "@/components/tiles/projects/ProjectsTile";
 import { SkillsExpanded } from "@/components/tiles/skills/SkillsExpanded";
 import { SkillsTile } from "@/components/tiles/skills/SkillsTile";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -61,7 +63,7 @@ export const TILE_CONTENT: Record<SectionId, TileContent> = {
   links: { Collapsed: LinksTile },
   now: { Collapsed: NowTile },
   skills: { Collapsed: SkillsTile, Expanded: SkillsExpanded },
-  projects: expandablePlaceholder("projects"),
+  projects: { Collapsed: ProjectsTile, Expanded: ProjectsExpanded },
   experience: expandablePlaceholder("experience"),
   about: expandablePlaceholder("about"),
 };
