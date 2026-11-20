@@ -5,6 +5,7 @@ import { InteractiveBentoGrid } from "@/components/bento/InteractiveBentoGrid";
 import { GhostWordProvider } from "@/components/ghost/GhostWordProvider";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { PersonJsonLd } from "@/components/seo/PersonJsonLd";
 import { resolveLocale } from "@/lib/i18n/resolve-locale";
 
 interface HomePageProps {
@@ -17,6 +18,7 @@ export default async function HomePage({ params }: HomePageProps) {
   return (
     // Full-viewport layer. `isolate` keeps the decor's negative z-index inside this page.
     <div className="relative isolate flex min-h-dvh flex-col lg:h-dvh lg:overflow-hidden">
+      <PersonJsonLd locale={locale} />
       <BackgroundDecor />
 
       {/* The grid reports the active section; the header shows its ghost word. */}

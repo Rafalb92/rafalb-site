@@ -13,6 +13,12 @@ export const LOCALE_NAMES: Record<Locale, string> = {
   pl: "Polski",
 };
 
+/** Open Graph expects language_TERRITORY codes. */
+export const OG_LOCALE_CODES: Record<Locale, string> = {
+  en: "en_US",
+  pl: "pl_PL",
+};
+
 export function isLocale(value: string): value is Locale {
   return (LOCALES as readonly string[]).includes(value);
 }

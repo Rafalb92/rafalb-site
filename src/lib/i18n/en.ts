@@ -1,6 +1,6 @@
 export const en = {
   meta: {
-    title: "Rafał — Fullstack Developer",
+    title: "Rafał Bochniewicz — Fullstack Developer",
     description:
       "Fullstack TypeScript developer — Node.js, NestJS, React, Next.js, React Native.",
   },

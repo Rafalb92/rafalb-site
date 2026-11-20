@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Caveat, Geist_Mono, Raleway } from "next/font/google";
 import { MotionProvider } from "@/providers/MotionProvider";
-import { DEFAULT_LOCALE, LOCALES } from "@/lib/i18n/config";
+import { PROFILE } from "@/content/profile";
+import { DEFAULT_LOCALE, LOCALES, OG_LOCALE_CODES } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
 import { resolveLocale } from "@/lib/i18n/resolve-locale";
+import { SITE_URL } from "@/lib/site";
 import "../globals.css";
 
 const raleway = Raleway({
@@ -38,9 +40,7 @@ export async function generateMetadata({
   const { meta } = getDictionary(locale);
 
   return {
-    metadataBase: new URL(
-      process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-    ),
+    metadataBase: new URL(SITE_URL),
     title: meta.title,
     description: meta.description,
     alternates: {
@@ -49,6 +49,22 @@ export async function generateMetadata({
         ...Object.fromEntries(LOCALES.map((code) => [code, `/${code}`])),
         "x-default": `/${DEFAULT_LOCALE}`,
       },
+    },
+    openGraph: {
+      type: "website",
+      url: `/${locale}`,
+      siteName: PROFILE.name,
+      title: meta.title,
+      description: meta.description,
+      locale: OG_LOCALE_CODES[locale],
+      alternateLocale: LOCALES.filter((code) => code !== locale).map(
+        (code) => OG_LOCALE_CODES[code],
+      ),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
     },
   };
 }
