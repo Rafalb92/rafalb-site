@@ -6,6 +6,7 @@ import { resolveLocale } from "@/lib/i18n/resolve-locale";
 import { loadOgFonts } from "@/lib/og-fonts";
 import { OG_COLORS } from "@/lib/og-theme";
 import { SITE_HOST } from "@/lib/site";
+import { LOCALES } from "@/lib/i18n/config";
 
 export const alt = `${PROFILE.name} — Fullstack Developer`;
 export const size = { width: 1200, height: 630 };
@@ -105,4 +106,7 @@ export default async function OpengraphImage({ params }: OpengraphImageProps) {
     </div>,
     { ...size, fonts: await loadOgFonts() },
   );
+}
+export function generateStaticParams() {
+  return LOCALES.map((locale) => ({ locale }));
 }

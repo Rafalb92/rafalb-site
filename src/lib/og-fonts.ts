@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-
+import { cacheLife } from "next/cache";
 const FONTS_DIR = join(process.cwd(), "src/assets/fonts");
 
 /**
@@ -9,6 +9,7 @@ const FONTS_DIR = join(process.cwd(), "src/assets/fonts");
  */
 async function readFontFile(fileName: string): Promise<ArrayBuffer> {
   "use cache";
+  cacheLife("max"); // font files never change between deploys
   const file = await readFile(join(FONTS_DIR, fileName));
   // Copy into a plain ArrayBuffer — serializable for the cache and accepted by next/og.
   return new Uint8Array(file).buffer;
