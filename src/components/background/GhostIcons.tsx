@@ -18,16 +18,6 @@ const GHOST_ICON_SHAPES: Record<GhostIconName, ReactNode> = {
       <path d="M58 22 L 42 78" />
     </>
   ),
-  skeleton: (
-    <>
-      <rect x="10" y="18" width="80" height="64" rx="6" />
-      <circle cx="26" cy="36" r="7" />
-      <rect x="38" y="31" width="40" height="4" rx="2" />
-      <rect x="38" y="40" width="28" height="4" rx="2" />
-      <rect x="18" y="56" width="64" height="4" rx="2" />
-      <rect x="18" y="66" width="50" height="4" rx="2" />
-    </>
-  ),
 };
 
 export function GhostIcons() {

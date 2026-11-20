@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { GhostWord } from "@/components/background/GhostWord";
+import { useGhostWord } from "@/components/ghost/GhostWordProvider";
 import { useDictionary } from "@/lib/i18n/LocaleProvider";
 import { TILE_FADE_OUT } from "@/lib/motion";
 import { ExpandedTile } from "./ExpandedTile";
@@ -10,7 +10,7 @@ import { SECTION_IDS, type SectionId } from "./sections";
 import { TILE_CONTENT } from "./tile-content";
 import { Tile } from "./Tile";
 
-/** Delay before the ghost word falls back to default — prevents flicker when crossing gaps. */
+/** Delay before the ghost word is blown away — prevents flicker when crossing gaps. */
 const HOVER_LEAVE_DELAY_MS = 150;
 
 interface BentoGridProps {
@@ -21,13 +21,16 @@ interface BentoGridProps {
 
 export function BentoGrid({ activeId, onOpen, onClose }: BentoGridProps) {
   const { sections, tile } = useDictionary();
+  const { setSectionId } = useGhostWord();
   const triggerRefs = useRef(new Map<SectionId, HTMLButtonElement>());
 
   const [hoveredId, setHoveredId] = useState<SectionId | null>(null);
   const leaveTimeoutRef = useRef<number | undefined>(undefined);
 
   // Ignore ids pointing at non-expandable sections (e.g. `?section=hero`).
-  const ExpandedContent = activeId ? TILE_CONTENT[activeId].Expanded : undefined;
+  const ExpandedContent = activeId
+    ? TILE_CONTENT[activeId].Expanded
+    : undefined;
   const expandedId = ExpandedContent ? activeId : null;
   const isExpanded = expandedId !== null;
 
@@ -50,18 +53,23 @@ export function BentoGrid({ activeId, onOpen, onClose }: BentoGridProps) {
 
   const handleTileLeave = useCallback(() => {
     window.clearTimeout(leaveTimeoutRef.current);
-    leaveTimeoutRef.current = window.setTimeout(() => setHoveredId(null), HOVER_LEAVE_DELAY_MS);
+    leaveTimeoutRef.current = window.setTimeout(
+      () => setHoveredId(null),
+      HOVER_LEAVE_DELAY_MS,
+    );
   }, []);
 
   useEffect(() => () => window.clearTimeout(leaveTimeoutRef.current), []);
 
-  // Expanded tile wins, then the hovered or focused tile, then the default (hero) word.
-  const ghostSectionId: SectionId = expandedId ?? hoveredId ?? "hero";
+  // Expanded tile wins, then the hovered or focused tile; nothing otherwise.
+  const ghostSectionId = expandedId ?? hoveredId;
+
+  useEffect(() => {
+    setSectionId(ghostSectionId);
+  }, [ghostSectionId, setSectionId]);
 
   return (
     <div className="relative lg:h-full">
-      <GhostWord word={sections[ghostSectionId].ghostWord} />
-
       <div className="bento" inert={isExpanded}>
         {SECTION_IDS.map((id) => {
           // The expanded panel takes over this tile's layoutId.

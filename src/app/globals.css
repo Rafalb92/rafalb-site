@@ -43,6 +43,7 @@
   --ghost: rgb(255 255 255 / 0.04);
   --led: var(--amber-500);
   --led-size: 3px;
+  --ghost-word: rgb(255 255 255 / 0.1);
 
   /* Layout */
   --page-max-width: 88rem; /* 7xl = 80rem · 8xl = 88rem · 9xl = 96rem */
@@ -94,6 +95,8 @@
   --spacing-tile: var(--tile-padding);
 
   --radius-tile: var(--tile-radius);
+
+  --color-ghost-word: var(--ghost-word);
 }
 
 /* ==========================================================================

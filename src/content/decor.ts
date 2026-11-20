@@ -51,9 +51,10 @@ export const LED_DOTS: readonly LedDot[] = [
 
 /* -------------------------------------------------------------------------- */
 /* Ghost icons — large, barely visible, cropped by the viewport edges.        */
+/* The bottom edge is reserved for the ghost word, so no icons go there.      */
 /* -------------------------------------------------------------------------- */
 
-export type GhostIconName = "braces" | "chevrons" | "skeleton";
+export type GhostIconName = "braces" | "chevrons";
 
 export interface GhostIconPlacement {
   name: GhostIconName;
@@ -76,11 +77,5 @@ export const GHOST_ICONS: readonly GhostIconPlacement[] = [
     position: { bottom: "8%", left: "-8rem" },
     size: "24rem",
     rotate: -10,
-  },
-  {
-    name: "skeleton",
-    position: { bottom: "-7rem", right: "14%" },
-    size: "18rem",
-    rotate: -4,
   },
 ];

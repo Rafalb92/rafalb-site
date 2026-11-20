@@ -7,7 +7,7 @@ import { EASE_OUT_EXPO } from "@/lib/motion";
 const GLYPH_WIDTH_EM = 0.68;
 
 /**
- * Huge, barely visible word at the bottom edge of the viewport, cropped by it.
+ * Huge, barely visible word resting just above the bottom edge of the viewport.
  * Desktop only — on mobile the stacked tiles cover it anyway.
  */
 export function GhostWord({ word }: { word: string }) {
@@ -16,7 +16,7 @@ export function GhostWord({ word }: { word: string }) {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 hidden overflow-hidden lg:block"
+      className="pointer-events-none fixed inset-x-0 bottom-2 -z-10 hidden overflow-hidden lg:block"
     >
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.p
@@ -26,7 +26,7 @@ export function GhostWord({ word }: { word: string }) {
           exit={{ opacity: 0, y: "-6%" }}
           transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
           style={{ fontSize }}
-          className="w-full translate-y-[38%] text-center leading-none font-bold tracking-tighter whitespace-nowrap text-ghost select-none"
+          className="w-full text-center leading-none font-bold tracking-tighter whitespace-nowrap text-ghost select-none"
         >
           {word}
         </motion.p>

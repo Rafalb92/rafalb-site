@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { BackgroundDecor } from "@/components/background/BackgroundDecor";
 import { BentoGrid } from "@/components/bento/BentoGrid";
 import { InteractiveBentoGrid } from "@/components/bento/InteractiveBentoGrid";
+import { GhostWordProvider } from "@/components/ghost/GhostWordProvider";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { resolveLocale } from "@/lib/i18n/resolve-locale";
@@ -18,21 +19,24 @@ export default async function HomePage({ params }: HomePageProps) {
     <div className="relative isolate flex min-h-dvh flex-col lg:h-dvh lg:overflow-hidden">
       <BackgroundDecor />
 
-      {/* Centered page column: header, grid and footer share the same edges. */}
-      <div className="mx-auto flex w-full max-w-page flex-1 flex-col lg:min-h-0">
-        <SiteHeader locale={locale} />
+      {/* The grid reports the active section; the header shows its ghost word. */}
+      <GhostWordProvider>
+        {/* Centered page column: header, grid and footer share the same edges. */}
+        <div className="mx-auto flex w-full max-w-page flex-1 flex-col lg:min-h-0">
+          <SiteHeader locale={locale} />
 
-        <main className="flex-1 px-gutter lg:flex lg:min-h-0 lg:flex-col lg:justify-center">
-          <div className="lg:h-full lg:max-h-(--grid-max-height)">
-            {/* Static grid is prerendered; the interactive one takes over once search params are known. */}
-            <Suspense fallback={<BentoGrid activeId={null} />}>
-              <InteractiveBentoGrid />
-            </Suspense>
-          </div>
-        </main>
+          <main className="flex-1 px-gutter lg:flex lg:min-h-0 lg:flex-col lg:justify-center">
+            <div className="lg:h-full lg:max-h-(--grid-max-height)">
+              {/* Static grid is prerendered; the interactive one takes over once search params are known. */}
+              <Suspense fallback={<BentoGrid activeId={null} />}>
+                <InteractiveBentoGrid />
+              </Suspense>
+            </div>
+          </main>
 
-        <SiteFooter locale={locale} />
-      </div>
+          <SiteFooter locale={locale} />
+        </div>
+      </GhostWordProvider>
     </div>
   );
 }
