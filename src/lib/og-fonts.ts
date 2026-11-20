@@ -3,11 +3,22 @@ import { join } from "node:path";
 
 const FONTS_DIR = join(process.cwd(), "src/assets/fonts");
 
+/**
+ * Cached so image routes don't count as dynamic: with cacheComponents,
+ * uncached file reads would make them render on every request.
+ */
+async function readFontFile(fileName: string): Promise<ArrayBuffer> {
+  "use cache";
+  const file = await readFile(join(FONTS_DIR, fileName));
+  // Copy into a plain ArrayBuffer — serializable for the cache and accepted by next/og.
+  return new Uint8Array(file).buffer;
+}
+
 /** Raleway for next/og. Satori needs raw TTF/OTF/WOFF data — WOFF2 is not supported. */
 export async function loadOgFonts() {
   const [regular, bold] = await Promise.all([
-    readFile(join(FONTS_DIR, "Raleway-Regular.ttf")),
-    readFile(join(FONTS_DIR, "Raleway-Bold.ttf")),
+    readFontFile("Raleway-Regular.ttf"),
+    readFontFile("Raleway-Bold.ttf"),
   ]);
 
   return [
