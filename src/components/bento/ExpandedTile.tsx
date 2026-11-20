@@ -37,7 +37,14 @@ export function ExpandedTile({
     if (!onClose) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
+      if (event.key !== "Escape") return;
+      // A dialog opened on top (e.g. the contact form) handles its own Escape.
+      if (
+        event.target instanceof Element &&
+        event.target.closest('[role="dialog"]')
+      )
+        return;
+      onClose();
     };
 
     window.addEventListener("keydown", handleKeyDown);

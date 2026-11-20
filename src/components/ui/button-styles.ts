@@ -14,7 +14,7 @@ export function buttonStyles(
   className?: string,
 ): string {
   return cn(
-    "inline-flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition duration-200",
+    "inline-flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition duration-200 disabled:cursor-not-allowed disabled:opacity-60",
     VARIANT_STYLES[variant],
     className,
   );

@@ -188,4 +188,44 @@ export const pl: Dictionary = {
       ],
     },
   },
+  contact: {
+    title: "Porozmawiajmy",
+    description:
+      "Opowiedz mi o roli lub projekcie — odezwę się najszybciej, jak to możliwe.",
+    fields: {
+      name: "Imię",
+      email: "E-mail",
+      message: "Wiadomość",
+    },
+    placeholders: {
+      name: "Jan Kowalski",
+      email: "jan@firma.pl",
+      message: "Kilka słów o roli lub projekcie…",
+    },
+    send: "Wyślij wiadomość",
+    sending: "Wysyłanie…",
+    errors: {
+      required: "To pole jest wymagane.",
+      invalidEmail: "Podaj poprawny adres e-mail.",
+      tooShort: "Napisz trochę więcej — minimum 10 znaków.",
+      tooLong: "Ten tekst jest za długi.",
+      sendFailed:
+        "Coś poszło nie tak. Spróbuj ponownie albo napisz bezpośrednio na e-mail.",
+    },
+    success: {
+      title: "Wiadomość wysłana",
+      body: "Dzięki — odezwę się wkrótce.",
+      close: "Zamknij",
+    },
+    orEmail: "Wolisz e-mail?",
+    copy: "Kopiuj adres e-mail",
+    copied: "Skopiowano",
+    close: "Zamknij okno",
+  },
+  notFound: {
+    eyebrow: "Błąd 404",
+    title: "Nie ma takiej strony",
+    body: "Ta strona nie istnieje — może literówka w adresie albo nieaktualny link.",
+    backHome: "Wróć na stronę główną",
+  },
 };

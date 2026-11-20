@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ContactDialog } from "@/components/contact/ContactDialog";
 import type { Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -17,13 +18,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
 
       <div className="flex items-center gap-4">
         <LanguageSwitcher locale={locale} label={header.languageSwitcher} />
-
-        <button
-          type="button"
-          className="rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-fg transition-opacity duration-150 hover:opacity-90"
-        >
-          {header.letsTalk}
-        </button>
+        <ContactDialog />
       </div>
     </header>
   );

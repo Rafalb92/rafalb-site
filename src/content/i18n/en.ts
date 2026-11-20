@@ -2,6 +2,8 @@ import type { SectionId } from "@/components/bento/sections";
 import type { ProjectId } from "@/content/projects";
 import type { SkillCategoryId, SkillId } from "@/content/skills";
 import type { ExperienceId } from "@/content/experience";
+import type { ContactFieldError } from "@/lib/contact/types";
+
 interface SectionText {
   label: string;
   /** Large background word shown while the tile is hovered or expanded. */
@@ -214,6 +216,45 @@ export const en = {
         "Hiking in the mountains",
       ],
     },
+  },
+  contact: {
+    title: "Let's talk",
+    description:
+      "Tell me about the role or the project — I'll get back to you as soon as I can.",
+    fields: {
+      name: "Name",
+      email: "Email",
+      message: "Message",
+    },
+    placeholders: {
+      name: "Jane Doe",
+      email: "jane@company.com",
+      message: "A few words about the role or project…",
+    },
+    send: "Send message",
+    sending: "Sending…",
+    errors: {
+      required: "This field is required.",
+      invalidEmail: "Enter a valid email address.",
+      tooShort: "A bit more detail, please — at least 10 characters.",
+      tooLong: "That's a bit too long.",
+      sendFailed: "Something went wrong. Try again or email me directly.",
+    } satisfies Record<ContactFieldError | "sendFailed", string>,
+    success: {
+      title: "Message sent",
+      body: "Thanks — I'll get back to you soon.",
+      close: "Close",
+    },
+    orEmail: "Prefer email?",
+    copy: "Copy email address",
+    copied: "Copied",
+    close: "Close dialog",
+  },
+  notFound: {
+    eyebrow: "Error 404",
+    title: "Page not found",
+    body: "This page doesn't exist — maybe a typo in the address, or the link is outdated.",
+    backHome: "Back to the homepage",
   },
 };
 
