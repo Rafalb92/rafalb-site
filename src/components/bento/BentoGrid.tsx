@@ -7,8 +7,8 @@ import { useDictionary } from "@/lib/i18n/LocaleProvider";
 import { TILE_FADE_OUT } from "@/lib/motion";
 import { ExpandedTile } from "./ExpandedTile";
 import { SECTION_IDS, type SectionId } from "./sections";
-import { TILE_CONTENT } from "./tile-content";
 import { Tile } from "./Tile";
+import { TILE_CONTENT } from "./tile-content";
 
 /** Delay before the ghost word is blown away — prevents flicker when crossing gaps. */
 const HOVER_LEAVE_DELAY_MS = 150;

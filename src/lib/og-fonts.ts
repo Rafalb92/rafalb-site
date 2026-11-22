@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { cacheLife } from "next/cache";
+
 const FONTS_DIR = join(process.cwd(), "src/assets/fonts");
 
 /**

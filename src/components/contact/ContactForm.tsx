@@ -6,12 +6,11 @@ import { buttonStyles } from "@/components/ui/button-styles";
 import { FormField, inputStyles } from "@/components/ui/FormField";
 import { sendContactMessage } from "@/lib/contact/send-contact-message";
 import {
+  type ContactFieldError,
   HONEYPOT_FIELD,
   INITIAL_CONTACT_STATE,
-  type ContactFieldError,
 } from "@/lib/contact/types";
 import { useDictionary } from "@/lib/i18n/LocaleProvider";
-
 
 export function ContactForm({ onClose }: { onClose: () => void }) {
   const { contact } = useDictionary();

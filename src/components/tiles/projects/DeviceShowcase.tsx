@@ -1,8 +1,8 @@
 "use client";
 
-import { PhoneFrame } from "@/components/ui/devices/PhoneFrame";
 import { LaptopFrame } from "@/components/ui/devices/LaptopFrame";
-import { PROJECTS, findProjectByDevice } from "@/content/projects";
+import { PhoneFrame } from "@/components/ui/devices/PhoneFrame";
+import { findProjectByDevice, PROJECTS } from "@/content/projects";
 import { cn } from "@/lib/cn";
 import { useDictionary } from "@/lib/i18n/LocaleProvider";
 

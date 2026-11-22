@@ -4,11 +4,11 @@ import { Resend } from "resend";
 import { z } from "zod";
 import { contactSchema } from "./schema";
 import {
-  HONEYPOT_FIELD,
   type ContactFieldError,
   type ContactFieldErrors,
   type ContactFormState,
   type ContactFormValues,
+  HONEYPOT_FIELD,
 } from "./types";
 
 function requireEnv(name: string): string {

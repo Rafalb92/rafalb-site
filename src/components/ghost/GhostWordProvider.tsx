@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, use, useState, type ReactNode } from "react";
+import { createContext, type ReactNode, use, useState } from "react";
 import type { SectionId } from "@/components/bento/sections";
 
 interface GhostWordContextValue {

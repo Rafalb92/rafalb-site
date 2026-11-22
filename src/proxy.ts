@@ -1,9 +1,9 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import {
   DEFAULT_LOCALE,
+  isLocale,
   LOCALE_COOKIE,
   LOCALES,
-  isLocale,
   type Locale,
 } from "@/lib/i18n/config";
 

@@ -1,8 +1,8 @@
 "use client";
 
-import { createContext, use, type ReactNode } from "react";
+import { createContext, type ReactNode, use } from "react";
 import type { Locale } from "./config";
-import { getDictionary, type Dictionary } from "./dictionaries";
+import { type Dictionary, getDictionary } from "./dictionaries";
 
 const LocaleContext = createContext<Locale | null>(null);
 

@@ -1,4 +1,4 @@
-import { en, type Dictionary } from "@/content/i18n/en";
+import { type Dictionary, en } from "@/content/i18n/en";
 import { pl } from "@/content/i18n/pl";
 import type { Locale } from "./config";
 

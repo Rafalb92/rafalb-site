@@ -1,8 +1,8 @@
 "use client";
 
 import {
-  FloatingPortal,
   autoUpdate,
+  FloatingPortal,
   flip,
   offset,
   shift,
@@ -11,7 +11,7 @@ import {
   useInteractions,
 } from "@floating-ui/react";
 import { AnimatePresence, motion } from "motion/react";
-import { useState, type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 import { cn } from "@/lib/cn";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 

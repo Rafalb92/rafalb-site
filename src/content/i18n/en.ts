@@ -1,7 +1,7 @@
 import type { SectionId } from "@/components/bento/sections";
+import type { ExperienceId } from "@/content/experience";
 import type { ProjectId } from "@/content/projects";
 import type { SkillCategoryId, SkillId } from "@/content/skills";
-import type { ExperienceId } from "@/content/experience";
 import type { ContactFieldError } from "@/lib/contact/types";
 
 interface SectionText {

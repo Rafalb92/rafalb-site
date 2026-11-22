@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useEffect, useRef, type ReactNode } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 import {
   CONTENT_REVEAL,
   TILE_LAYOUT_TRANSITION,
   TILE_RADIUS,
 } from "@/lib/motion";
-import { tileLayoutId, type SectionId } from "./sections";
+import { type SectionId, tileLayoutId } from "./sections";
 
 interface ExpandedTileProps {
   area: SectionId;

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Caveat, Geist_Mono, Raleway } from "next/font/google";
-import { MotionProvider } from "@/providers/MotionProvider";
 import { PROFILE } from "@/content/profile";
 import { DEFAULT_LOCALE, LOCALES, OG_LOCALE_CODES } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { LocaleProvider } from "@/lib/i18n/LocaleProvider";
 import { resolveLocale } from "@/lib/i18n/resolve-locale";
 import { SITE_URL } from "@/lib/site";
+import { MotionProvider } from "@/providers/MotionProvider";
 import "../globals.css";
 
 const raleway = Raleway({

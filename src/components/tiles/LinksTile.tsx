@@ -5,8 +5,8 @@ import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { LuArrowUpRight, LuDownload, LuMail } from "react-icons/lu";
 import {
   CONTACT_LINK_KINDS,
-  getContactHref,
   type ContactLinkKind,
+  getContactHref,
 } from "@/content/links";
 import { useDictionary, useLocale } from "@/lib/i18n/LocaleProvider";
 

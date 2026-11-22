@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type HTMLMotionProps } from "motion/react";
+import { type HTMLMotionProps, motion } from "motion/react";
 import type { ReactNode, Ref } from "react";
 import { LuPlus } from "react-icons/lu";
 import { cn } from "@/lib/cn";
@@ -10,7 +10,7 @@ import {
   TILE_LAYOUT_TRANSITION,
   TILE_RADIUS,
 } from "@/lib/motion";
-import { tileLayoutId, type SectionId } from "./sections";
+import { type SectionId, tileLayoutId } from "./sections";
 
 interface TileProps extends Omit<HTMLMotionProps<"section">, "children"> {
   /** Grid area name — must match an area in the `.bento` template. */
