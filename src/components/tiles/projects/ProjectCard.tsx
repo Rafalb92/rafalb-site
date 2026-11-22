@@ -16,7 +16,7 @@ import {
   type ProjectStatus,
 } from "@/content/projects";
 import { cn } from "@/lib/cn";
-import { useDictionary, useLocale } from "@/lib/i18n/LocaleProvider";
+import { useDictionary } from "@/lib/i18n/LocaleProvider";
 import { FADE_UP_ITEM } from "@/lib/motion";
 
 interface ProjectCardProps {
@@ -27,7 +27,6 @@ interface ProjectCardProps {
 
 export function ProjectCard({ id, reversed = false }: ProjectCardProps) {
   const { projects, links } = useDictionary();
-  const locale = useLocale();
   const project = PROJECTS[id];
   const text = projects.items[id];
   const headingId = `project-${id}`;
@@ -107,10 +106,7 @@ export function ProjectCard({ id, reversed = false }: ProjectCardProps) {
           <div className="flex flex-wrap gap-3 pt-2">
             {/* Live demo disabled until the project is deployed. */}
             {project.links.live && (
-              <SketchTooltip
-                side="top"
-                note={locale === "en" ? "Soon" : "Wkrótce"}
-              >
+              <SketchTooltip side="top" note={links.soon}>
                 <span
                   aria-disabled="true"
                   className={buttonStyles(

@@ -45,6 +45,7 @@ export const pl: Dictionary = {
     email: "E-mail",
     cv: "Pobierz CV",
     opensInNewTab: "(otwiera się w nowej karcie)",
+    soon: "Wkrótce",
   },
   skills: {
     intro:

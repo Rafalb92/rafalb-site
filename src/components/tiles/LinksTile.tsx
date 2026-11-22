@@ -9,6 +9,7 @@ import {
   getContactHref,
 } from "@/content/links";
 import { useDictionary, useLocale } from "@/lib/i18n/LocaleProvider";
+import { SketchTooltip } from "../ui/SketchTooltip";
 
 const LINK_ICONS: Record<ContactLinkKind, IconType> = {
   github: FaGithub,
@@ -38,6 +39,24 @@ export function LinksTile() {
       {CONTACT_LINK_KINDS.map((kind) => {
         const Icon = LINK_ICONS[kind];
         const isExternal = EXTERNAL_KINDS.has(kind);
+
+        // LinkedIn is disabled until the profile is ready: no link, "Soon" tooltip.
+        if (kind === "linkedin")
+          return (
+            <li key={kind} className="min-h-0 opacity-50">
+              <SketchTooltip side="top" note={links.soon} className="h-full">
+                <span
+                  aria-disabled="true"
+                  className="flex h-full cursor-not-allowed flex-col justify-between gap-3 rounded-lg border border-line p-3"
+                >
+                  <Icon aria-hidden="true" className="size-5 text-fg-muted" />
+                  <span className="text-sm font-medium text-fg">
+                    {links[kind]}
+                  </span>
+                </span>
+              </SketchTooltip>
+            </li>
+          );
 
         return (
           <li key={kind} className="min-h-0">

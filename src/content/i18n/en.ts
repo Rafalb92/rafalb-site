@@ -90,6 +90,8 @@ export const en = {
     email: "Email",
     cv: "Download CV",
     opensInNewTab: "(opens in a new tab)",
+    /** Tooltip on links that are not available yet. */
+    soon: "Soon",
   },
   skills: {
     intro:
