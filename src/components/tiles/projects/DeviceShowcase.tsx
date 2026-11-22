@@ -19,7 +19,9 @@ export function DeviceShowcase() {
 
   return (
     // `container-type: size` enables cqw/cqh units so the devices fit both dimensions.
-    <div className="relative min-h-0 flex-1 [container-type:size]">
+    // Mobile tiles are auto-height, so the box needs a fixed height: a flex-grown
+    // or min-height-only box resolves cqh to 0 and the laptop collapses.
+    <div className="relative min-h-0 flex-1 [container-type:size] max-lg:h-56 max-lg:flex-none">
       <div className="absolute inset-0 flex items-end justify-center">
         <div
           className={cn(
