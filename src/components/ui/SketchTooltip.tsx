@@ -98,6 +98,7 @@ export function SketchTooltip({
 function SketchArrow({ flipped }: { flipped: boolean }) {
   return (
     <svg
+      aria-hidden="true"
       viewBox="0 0 64 40"
       fill="none"
       stroke="currentColor"

@@ -26,6 +26,7 @@ export function GhostIcons() {
       {GHOST_ICONS.map(({ name, position, size, rotate }) => (
         <svg
           key={name}
+          aria-hidden="true"
           viewBox="0 0 100 100"
           fill="none"
           stroke="currentColor"
