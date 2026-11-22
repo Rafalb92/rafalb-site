@@ -10,7 +10,7 @@ import {
   useHover,
   useInteractions,
 } from "@floating-ui/react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { type ReactNode, useState } from "react";
 import { cn } from "@/lib/cn";
 import { EASE_OUT_EXPO } from "@/lib/motion";
@@ -34,6 +34,8 @@ export function SketchTooltip({
   children,
 }: SketchTooltipProps) {
   const [isOpen, setIsOpen] = useState(false);
+  // Reduced motion: no wipe or line drawing, only a short opacity fade.
+  const reduceMotion = useReducedMotion() ?? false;
 
   const { refs, floatingStyles, context, placement } = useFloating({
     open: isOpen,
@@ -70,6 +72,9 @@ export function SketchTooltip({
               ref={refs.setFloating}
               style={floatingStyles}
               aria-hidden="true"
+              initial={reduceMotion ? { opacity: 0 } : false}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.15 }}
               exit={{ opacity: 0, transition: { duration: 0.12 } }}
               className={cn(
                 "pointer-events-none z-60 flex items-start",
@@ -77,7 +82,9 @@ export function SketchTooltip({
               )}
             >
               <motion.span
-                initial={{ clipPath: "inset(0 100% 0 0)" }}
+                initial={
+                  reduceMotion ? false : { clipPath: "inset(0 100% 0 0)" }
+                }
                 animate={{ clipPath: "inset(0 0% 0 0)" }}
                 transition={{ duration: 0.45, ease: EASE_OUT_EXPO }}
                 className="pl-7 font-hand text-xl leading-none whitespace-nowrap text-accent"
@@ -85,7 +92,7 @@ export function SketchTooltip({
                 {note}
               </motion.span>
 
-              <SketchArrow flipped={isBelow} />
+              <SketchArrow flipped={isBelow} instant={reduceMotion} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -94,8 +101,17 @@ export function SketchTooltip({
   );
 }
 
-/** Hand-drawn arrow: the shaft draws from the note towards the trigger, then the head. */
-function SketchArrow({ flipped }: { flipped: boolean }) {
+/**
+ * Hand-drawn arrow: the shaft draws from the note towards the trigger, then the head.
+ * With `instant`, it renders fully drawn.
+ */
+function SketchArrow({
+  flipped,
+  instant,
+}: {
+  flipped: boolean;
+  instant: boolean;
+}) {
   return (
     <svg
       aria-hidden="true"
@@ -109,13 +125,13 @@ function SketchArrow({ flipped }: { flipped: boolean }) {
     >
       <motion.path
         d="M58 4 C 44 6, 18 12, 9 33"
-        initial={{ pathLength: 0 }}
+        initial={instant ? false : { pathLength: 0 }}
         animate={{ pathLength: 1 }}
         transition={{ duration: 0.35, delay: 0.1, ease: EASE_OUT_EXPO }}
       />
       <motion.path
         d="M3 26 L 9 34 L 16 29"
-        initial={{ pathLength: 0 }}
+        initial={instant ? false : { pathLength: 0 }}
         animate={{ pathLength: 1 }}
         transition={{ duration: 0.15, delay: 0.4, ease: "easeOut" }}
       />
