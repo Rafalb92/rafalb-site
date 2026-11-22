@@ -60,6 +60,7 @@ export function BlowAwayWord({ word }: { word: string | null }) {
         >
           {Array.from(word).map((char, index) => (
             <motion.span
+              // biome-ignore lint/suspicious/noArrayIndexKey: letters repeat ("SKILLS") and the list is fixed per word, so the position is the only stable identity.
               key={index}
               variants={LETTER_VARIANTS}
               className="inline-block"

@@ -21,6 +21,7 @@ export function ContactForm({ onClose }: { onClose: () => void }) {
 
   if (state.status === "success") {
     return (
+      // biome-ignore lint/a11y/useSemanticElements: <output> is inline and meant for calculation results; this is a block-level live region announcing success.
       <div role="status" className="space-y-4 py-4 text-center">
         <span className="mx-auto grid size-12 place-items-center rounded-full border border-accent/40 text-accent">
           <LuCheck aria-hidden="true" className="size-6" />

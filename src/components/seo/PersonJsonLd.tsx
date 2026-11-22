@@ -30,7 +30,7 @@ export function PersonJsonLd({ locale }: { locale: Locale }) {
   return (
     <script
       type="application/ld+json"
-      // Escape "<" so content can never close the script tag early.
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD must be inlined as raw JSON; "<" is escaped below so content cannot close the script tag.
       dangerouslySetInnerHTML={{
         __html: JSON.stringify(data).replace(/</g, "\\u003c"),
       }}
