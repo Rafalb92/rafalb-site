@@ -49,7 +49,7 @@ export const en = {
   meta: {
     title: "Rafał Bochniewicz — Fullstack Developer",
     description:
-      "Fullstack TypeScript developer — Node.js, NestJS, React, Next.js, React Native.",
+      "Fullstack TypeScript developer — Node.js, NestJS, React, Next.js, React Native. Dzierżoniów",
   },
   header: {
     letsTalk: "Let's talk",
@@ -79,9 +79,12 @@ export const en = {
   now: {
     status: "Open to work",
     details: [
-      { term: "Based in", value: "Wrocław, Poland" },
-      { term: "Work mode", value: "Remote · Hybrid" },
-      { term: "Building", value: "RepCheck — on-device exercise analysis" },
+      { term: "Based in", value: "Dzierżoniów, Poland" },
+      { term: "Work mode", value: "Remote · Hybrid · On-site" },
+      {
+        term: "Building",
+        value: "RepCheck — on-device exercise analysis, expo, React Native",
+      },
     ],
   },
   links: {

@@ -4,7 +4,7 @@ export const pl: Dictionary = {
   meta: {
     title: "Rafał Bochniewicz — Fullstack Developer",
     description:
-      "Fullstack developer TypeScript — Node.js, NestJS, React, Next.js, React Native.",
+      "Fullstack developer TypeScript — Node.js, NestJS, React, Next.js, React Native. Dzierżoniów",
   },
   header: {
     letsTalk: "Porozmawiajmy",
@@ -34,9 +34,12 @@ export const pl: Dictionary = {
   now: {
     status: "Otwarty na oferty",
     details: [
-      { term: "Lokalizacja", value: "Wrocław, Polska" },
-      { term: "Tryb pracy", value: "Zdalnie · Hybrydowo" },
-      { term: "Buduję", value: "RepCheck — analiza ćwiczeń na urządzeniu" },
+      { term: "Lokalizacja", value: "Dzierżoniów, Polska" },
+      { term: "Tryb pracy", value: "Zdalnie · Hybrydowo · Stacjonarnie" },
+      {
+        term: "Buduję",
+        value: "RepCheck — analiza ćwiczeń na urządzeniu, expo, React Native",
+      },
     ],
   },
   links: {
