@@ -1,0 +1,2 @@
+# Keep LF everywhere so Biome (which expects LF) passes on Windows checkouts too.
+* text=auto eol=lf
