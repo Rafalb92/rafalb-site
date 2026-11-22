@@ -70,7 +70,7 @@ export type SkillId = keyof typeof SKILL_DATA;
 
 export const SKILLS: Record<SkillId, SkillData> = SKILL_DATA;
 
-export const SKILL_CATEGORY_IDS = [
+const SKILL_CATEGORY_IDS = [
   "frontend",
   "backend",
   "mobile",

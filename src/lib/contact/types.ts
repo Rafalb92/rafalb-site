@@ -6,7 +6,7 @@ export interface ContactFormValues {
   message: string;
 }
 
-export type ContactField = keyof ContactFormValues;
+type ContactField = keyof ContactFormValues;
 
 /** Error codes, not messages — the client translates them through the dictionary. */
 export type ContactFieldError =
