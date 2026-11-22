@@ -54,6 +54,7 @@ export function ExpandedTile({
   return (
     <motion.section
       layoutId={tileLayoutId(area)}
+      data-expanded-panel
       aria-labelledby={titleId}
       style={{ borderRadius: TILE_RADIUS }}
       transition={{ layout: TILE_LAYOUT_TRANSITION }}
