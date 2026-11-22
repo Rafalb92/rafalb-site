@@ -195,3 +195,18 @@
     overflow: hidden;
   }
 }
+
+/* Invisible hit area of at least 44×44px centered on small controls — visuals stay unchanged. */
+@utility touch-target {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max(100%, --spacing(11));
+    height: max(100%, --spacing(11));
+    translate: -50% -50%;
+  }
+}

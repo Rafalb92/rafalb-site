@@ -33,7 +33,7 @@ export function CopyEmailButton() {
         type="button"
         onClick={handleCopy}
         aria-label={`${contact.copy}: ${PROFILE.email}`}
-        className="group inline-flex cursor-pointer items-center gap-2 font-mono text-xs text-fg transition-colors duration-200 hover:text-accent"
+        className="group touch-target inline-flex cursor-pointer items-center gap-2 font-mono text-xs text-fg transition-colors duration-200 hover:text-accent"
       >
         {PROFILE.email}
         {isCopied ? (

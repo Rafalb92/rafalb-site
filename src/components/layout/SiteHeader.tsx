@@ -14,7 +14,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
 
       <Link
         href={`/${locale}`}
-        className="text-lg font-semibold tracking-tight text-fg"
+        className="touch-target text-lg font-semibold tracking-tight text-fg"
       >
         Rafał<span className="text-accent">.</span>
       </Link>

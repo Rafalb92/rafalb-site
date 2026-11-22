@@ -77,7 +77,7 @@ export function ExpandedTile({
           type="button"
           onClick={onClose}
           aria-label={closeLabel}
-          className="grid size-9 cursor-pointer place-items-center rounded-full border border-line text-fg-muted transition-colors duration-200 hover:border-line-strong hover:text-fg"
+          className="touch-target grid size-9 cursor-pointer place-items-center rounded-full border border-line text-fg-muted transition-colors duration-200 hover:border-line-strong hover:text-fg"
         >
           <svg
             aria-hidden="true"

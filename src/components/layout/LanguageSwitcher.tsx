@@ -30,7 +30,7 @@ export function LanguageSwitcher({ locale, label }: LanguageSwitcherProps) {
               hrefLang={code}
               aria-current={isActive ? "true" : undefined}
               className={cn(
-                "rounded px-1 py-0.5 uppercase transition-colors duration-200",
+                "touch-target rounded px-2 py-0.5 uppercase transition-colors duration-200",
                 isActive ? "text-fg" : "text-fg-subtle hover:text-fg",
               )}
             >

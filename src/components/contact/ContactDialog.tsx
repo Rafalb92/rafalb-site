@@ -58,7 +58,7 @@ export function ContactDialog() {
                     <button
                       type="button"
                       aria-label={contact.close}
-                      className="grid size-9 shrink-0 cursor-pointer place-items-center rounded-full border border-line text-fg-muted transition-colors duration-200 hover:border-line-strong hover:text-fg"
+                      className="touch-target grid size-9 shrink-0 cursor-pointer place-items-center rounded-full border border-line text-fg-muted transition-colors duration-200 hover:border-line-strong hover:text-fg"
                     >
                       <LuX aria-hidden="true" className="size-4" />
                     </button>
