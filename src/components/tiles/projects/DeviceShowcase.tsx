@@ -26,9 +26,10 @@ export function DeviceShowcase() {
         <div
           className={cn(
             "relative transition-transform duration-500 ease-out-expo group-hover:-translate-y-1",
+            // Width caps leave room for what overhangs the laptop: the base (6% per side) and the phone.
             phoneId
               ? "w-[min(86cqw,calc(100cqh*1.45))]"
-              : "w-[min(100cqw,calc(100cqh*1.45))]",
+              : "w-[min(89cqw,calc(100cqh*1.45))]",
           )}
         >
           {laptopId && (
