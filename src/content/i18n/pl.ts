@@ -2,7 +2,7 @@ import type { Dictionary } from "./en";
 
 export const pl: Dictionary = {
   meta: {
-    title: "Rafał — Fullstack Developer",
+    title: "Rafał Bochniewicz — Fullstack Developer",
     description:
       "Fullstack developer TypeScript — Node.js, NestJS, React, Next.js, React Native.",
   },
