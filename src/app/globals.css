@@ -7,7 +7,7 @@
 :root {
   --neutral-100: #ededed;
   --neutral-400: #a3a3a3;
-  --neutral-500: #787878;
+  --neutral-500: #949494;
   --neutral-850: #222222;
   --neutral-900: #1a1a1a;
   --neutral-950: #141414;
@@ -33,7 +33,8 @@
   /* Text */
   --fg: var(--neutral-100);
   --fg-muted: var(--neutral-400);
-  --fg-subtle: var(--neutral-500); /* ~3.6:1 — non-essential meta text only */
+  /* WCAG AA: 5.24:1 on bg, 4.82:1 on surface, 4.54:1 on surface-hover. */
+  --fg-subtle: var(--neutral-500);
 
   /* Accent */
   --accent: var(--amber-500);

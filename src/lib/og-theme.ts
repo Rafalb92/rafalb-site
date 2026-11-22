@@ -6,6 +6,6 @@ export const OG_COLORS = {
   bg: "#222222",
   fg: "#ededed",
   fgMuted: "#a3a3a3",
-  fgSubtle: "#787878",
+  fgSubtle: "#949494",
   accent: "#f9a634",
 } as const;
