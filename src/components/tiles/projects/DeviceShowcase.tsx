@@ -36,7 +36,8 @@ export function DeviceShowcase() {
             <LaptopFrame
               image={PROJECTS[laptopId].image}
               alt={projects.items[laptopId].imageAlt}
-              sizes="(min-width: 1024px) 50vw, 100vw"
+              // Mobile widths measured: ~85vw minus gutters, capped at ~308px from 430px up.
+              sizes="(min-width: 1024px) 50vw, (min-width: 430px) 310px, calc(85vw - 56px)"
               preload
             />
           )}
