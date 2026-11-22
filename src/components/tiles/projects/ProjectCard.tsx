@@ -7,6 +7,7 @@ import { buttonStyles } from "@/components/ui/button-styles";
 import { LaptopFrame } from "@/components/ui/devices/LaptopFrame";
 import { PhoneFrame } from "@/components/ui/devices/PhoneFrame";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { SketchTooltip } from "@/components/ui/SketchTooltip";
 import { StatusDot } from "@/components/ui/StatusDot";
 import { TechBadge } from "@/components/ui/TechBadge";
 import {
@@ -15,7 +16,7 @@ import {
   type ProjectStatus,
 } from "@/content/projects";
 import { cn } from "@/lib/cn";
-import { useDictionary } from "@/lib/i18n/LocaleProvider";
+import { useDictionary, useLocale } from "@/lib/i18n/LocaleProvider";
 import { FADE_UP_ITEM } from "@/lib/motion";
 
 interface ProjectCardProps {
@@ -26,6 +27,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ id, reversed = false }: ProjectCardProps) {
   const { projects, links } = useDictionary();
+  const locale = useLocale();
   const project = PROJECTS[id];
   const text = projects.items[id];
   const headingId = `project-${id}`;
@@ -103,17 +105,23 @@ export function ProjectCard({ id, reversed = false }: ProjectCardProps) {
 
         {(project.links.live || project.links.repo) && (
           <div className="flex flex-wrap gap-3 pt-2">
+            {/* Live demo disabled until the project is deployed. */}
             {project.links.live && (
-              <a
-                href={project.links.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={buttonStyles("primary")}
+              <SketchTooltip
+                side="top"
+                note={locale === "en" ? "Soon" : "Wkrótce"}
               >
-                {projects.labels.liveDemo}
-                <LuArrowUpRight aria-hidden="true" className="size-4" />
-                <span className="sr-only"> {links.opensInNewTab}</span>
-              </a>
+                <span
+                  aria-disabled="true"
+                  className={buttonStyles(
+                    "primary",
+                    "cursor-not-allowed opacity-50 hover:opacity-50",
+                  )}
+                >
+                  {projects.labels.liveDemo}
+                  <LuArrowUpRight aria-hidden="true" className="size-4" />
+                </span>
+              </SketchTooltip>
             )}
 
             {project.links.repo && (
