@@ -98,7 +98,7 @@ export const en = {
   },
   skills: {
     intro:
-      "Tools I reach for, grouped by where they live in the stack. Hover the ones marked with a dot for a note on where I've used them.",
+      "Tools I reach for, grouped by where they live in the stack. Hover or tap the ones marked with a dot for a note on where I've used them.",
     categories: {
       frontend: {
         label: "Frontend",
@@ -184,6 +184,8 @@ export const en = {
   },
   about: {
     portraitAlt: "Illustrated portrait of Rafał",
+    teaser:
+      "From a production line to fullstack — my story, how I work and what I'm looking for.",
     story: [
       {
         heading: "Where I come from",

@@ -52,7 +52,7 @@ export const pl: Dictionary = {
   },
   skills: {
     intro:
-      "Narzędzia, po które sięgam, pogrupowane według miejsca w stacku. Najedź na te oznaczone kropką, żeby zobaczyć, gdzie ich używałem.",
+      "Narzędzia, po które sięgam, pogrupowane według miejsca w stacku. Najedź lub dotknij te oznaczone kropką, żeby zobaczyć, gdzie ich używałem.",
     categories: {
       frontend: {
         label: "Frontend",
@@ -154,6 +154,8 @@ export const pl: Dictionary = {
   },
   about: {
     portraitAlt: "Ilustrowany portret Rafała",
+    teaser:
+      "Od linii produkcyjnej do fullstacka — moja historia, sposób pracy i czego szukam.",
     story: [
       {
         heading: "Skąd idę",

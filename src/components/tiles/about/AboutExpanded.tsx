@@ -15,7 +15,7 @@ export function AboutExpanded() {
       <div className="lg:col-span-4">
         {/* Outer element sticks; inner element is the `relative` box next/image fills. */}
         <div className="lg:sticky lg:top-0">
-          <div className="relative mx-auto aspect-4/5 w-full max-w-xs overflow-hidden rounded-xl border border-line bg-bg">
+          <div className="relative mx-auto aspect-4/5 w-full max-w-48 lg:max-w-xs overflow-hidden rounded-xl border border-line bg-bg">
             <Image
               src={PORTRAIT}
               alt={about.portraitAlt}
