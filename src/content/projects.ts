@@ -42,7 +42,7 @@ const PROJECT_DATA = {
     ],
     links: {
       live: "https://ironoak.example.com",
-      repo: "https://github.com/your-handle/ironoak",
+      repo: "https://github.com/Rafalb92/ironoak",
     },
   },
 } satisfies Record<string, ProjectData>;
